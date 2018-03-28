@@ -22,7 +22,7 @@ export class FavoritesPage implements OnInit{
   }
  ngOnInit(){
    this.favoriteservice.getFavorites()
-   .subscribe(favorites=> this.favorites=favorites , errmsg => this.errMsg=errmsg);
+   .subscribe(favorites=> this.favorites=favorites , errmsg => this.errMsg= <any>errmsg);
  }
 
   ionViewDidLoad() {
@@ -33,7 +33,8 @@ export class FavoritesPage implements OnInit{
     console.log('delete', id);
     this.favoriteservice.deleteFavorite(id)
       .subscribe(favorites => this.favorites = favorites,
-        errmess => this.errMess = errmess);
+        errmess => this.errMsg = <any>errmess);
     item.close();
 
+}
 }
