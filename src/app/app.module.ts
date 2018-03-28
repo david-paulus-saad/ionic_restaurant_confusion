@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import {FavoritesPage} from '../pages/favorites/favorites';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {HttpModule} from '@angular/http';
@@ -15,7 +15,10 @@ import {DishdetailPage} from '../pages/dishdetail/dishdetail'
 import { DishProvider } from '../providers/dish/dish';
 import { LeaderProvider } from '../providers/leader/leader';
 import { PromotionProvider } from '../providers/promotion/promotion';
-import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg'; 
+import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
+import { FavoriteProvider } from '../providers/favorite/favorite'; 
+import {ReservationPage} from '../pages/reservation/reservation';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -23,7 +26,9 @@ import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-htt
     AboutPage,
     MenuPage,
     ContactPage,
-    DishdetailPage
+    DishdetailPage,
+    FavoritesPage,
+    ReservationPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,9 @@ import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-htt
     AboutPage,
     MenuPage,
     ContactPage,
-    DishdetailPage
+    DishdetailPage,
+    FavoritesPage,
+    ReservationPage
   ],
   providers: [
     StatusBar,
@@ -47,7 +54,8 @@ import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-htt
     LeaderProvider,
     PromotionProvider,
     ProcessHttpmsgProvider,
-    {provide:'BaseURL', useValue:baseURL}
+    {provide:'BaseURL', useValue:baseURL},
+    FavoriteProvider
   ]
 })
 export class AppModule {}
