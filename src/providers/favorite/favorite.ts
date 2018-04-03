@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import {Dish} from '../../shared/dish';
 import {DishProvider} from '../dish/dish';
+import {LocalNotifications} from '@ionic-native/local-notifications';
 /*
   Generated class for the FavoriteProvider provider.
 
@@ -14,13 +15,18 @@ export class FavoriteProvider {
 
   favorites: Array<any>;
 
-  constructor(public http: Http , private dishservice: DishProvider) {
+  constructor(public http: Http , private dishservice: DishProvider
+  ,private localNotifications:LocalNotifications) {
     console.log('Hello FavoriteProvider Provider');
     this.favorites = [];
   }
 
   addFavorite(id: number): boolean {
     this.favorites.push(id);
+    this.localNotifications.schedule({
+      id: id,
+      text:'Dish '+id+' added as a favorite successfully'
+    });
     return true;
   }
 
