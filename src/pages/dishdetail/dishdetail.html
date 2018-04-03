@@ -7,11 +7,18 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>Dish Details</ion-title>
+
+    <button ion-button right (click)="showOption()">
+      <ion-icon name="more"></ion-icon>
+      </button>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+  <ion-grid>
+<ion-row>
+  <ion-col col-12 col-lg-6>
 <ion-card *ngIf="dish">
 <img src="{{BaseURL + dish.image}}"/>
 <ion-card-content>
@@ -37,6 +44,7 @@
     </ion-col>
   </ion-row>
 </ion-card>
+</ion-col>
 <div [hidden]="dish || errMess">
   <ion-spinner></ion-spinner>
   <h4>Loading . . . Please Wait</h4>
@@ -45,7 +53,7 @@
   <h2>Error</h2>
   <h4>{{errMess}}</h4>
 </div>
-
+<ion-col col-12 col-lg-6>
 <ion-list *ngIf="dish">
   <ion-list-header>
     Comments
@@ -58,8 +66,11 @@
     </p>
   </ion-item>
 </ion-list>
+</ion-col>
+</ion-row>
+</ion-grid>
 <ion-fab bottom right [hidden]="favorite">
-  <button ion-fab (click)="addToFavorite()">
+  <button ion-fab (click)="addToFavorites()">
     <ion-icon name="heart-outline"></ion-icon>
   </button>
 </ion-fab>

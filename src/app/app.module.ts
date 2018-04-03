@@ -18,7 +18,9 @@ import { PromotionProvider } from '../providers/promotion/promotion';
 import { ProcessHttpmsgProvider } from '../providers/process-httpmsg/process-httpmsg';
 import { FavoriteProvider } from '../providers/favorite/favorite'; 
 import {ReservationPage} from '../pages/reservation/reservation';
-
+import {CommentPage} from '../pages/comment/comment';
+import { LoginPage } from '../pages/login/login';
+import {IonicStorageModule} from '@ionic/storage';
 @NgModule({
   declarations: [
     MyApp,
@@ -28,12 +30,15 @@ import {ReservationPage} from '../pages/reservation/reservation';
     ContactPage,
     DishdetailPage,
     FavoritesPage,
-    ReservationPage
+    ReservationPage,
+    CommentPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +49,9 @@ import {ReservationPage} from '../pages/reservation/reservation';
     ContactPage,
     DishdetailPage,
     FavoritesPage,
-    ReservationPage
+    ReservationPage,
+    CommentPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,42 @@
+<!--
+  Generated template for the CommentPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-toolbar  color="primary-pale">
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+      <span ion-text showWhen="ios" color="primary" >Cancel</span>
+      <ion-icon name="md-close" showWhen="android,windows" ></ion-icon>
+    </button>
+    </ion-buttons>
+    <ion-title>leave comment</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <ion-item >
+      <ion-label color="primary" floating>Name</ion-label>
+      <ion-input formControlName="author" ></ion-input>
+    </ion-item>
+
+    <ion-item >
+        <ion-range min="0" max="5" step="1" formControlName="rating" pin="true" snaps="true">
+            <ion-icon name="happy" small range-left ></ion-icon>
+            <ion-icon name="happy"  range-right ></ion-icon>
+          </ion-range>
+    </ion-item>
+
+    <ion-item >
+      <ion-label color="primary" floating>Comment</ion-label>
+      <ion-textarea formControlName="comment"></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!commentForm.valid">send</button>
+  </form>
+</ion-content>
