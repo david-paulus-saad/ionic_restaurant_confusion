@@ -24,7 +24,8 @@ export class DishdetailPage {
   errMess: string;
   avgstars: string;
   numcomments: number;
- 
+  Favorites: Array<any>;
+
   constructor(public navCtrl: NavController, public navParams: NavParams ,
   @Inject('BaseURL') private BaseURL, private toastCtrl:ToastController ,
   private favoriteservice: FavoriteProvider ,private actionSheetCtrl:ActionSheetController ,private modalCtrl:ModalController,
@@ -35,45 +36,11 @@ export class DishdetailPage {
     let total =0;
     this.dish.comments.forEach(comment => total += comment.rating);
     this.avgstars = (total/this.numcomments).toFixed(2);
-
+    this.Favorites=[];
   }
   addToFavorites() {
     
    this.favorite = this.favoriteservice.addFavorite(this.dish.id);
-   
-  //  this.storage.get('favorites').then(favorites=> {
-  //  if(favorites)
-  //  {this.favoritesIds=favorites;
-  //   this.favoritesIds.push(this.dish.id);
-  //   this.storage.set('favorites',this.favoritesIds);
-  // }
-  //  else {
-  //    this.favoritesIds.push(this.dish.id);
-  //    this.storage.set('favorites',this.favoritesIds);
-  //  }
-    // }
-    // );
-    
-     this.storage.get('favoritesId').then((favoritesId)=>{  
-     let Favorites ={
-       dishId:[]
-
-     }
-       
-       if(favoritesId != null)
-      { 
-       Favorites.dishId.concat(favoritesId);
-       Favorites.dishId.push(this.dish.id);
-       this.storage.set('favoritesId',Favorites);
-
-      }else{
-        Favorites.dishId.push(this.dish.id);
-        this.storage.set('favoritesId',Favorites);
-      }
-    }
-  
-  );
-      
    this.toastCtrl.create({
     message: 'Dish ' + this.dish.id + ' added as favorite successfully',
     position: 'middle',
