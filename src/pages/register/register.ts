@@ -62,5 +62,16 @@ export class RegisterPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
   }
+  getFromLibrary(){
+    const option :CameraOptions ={
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: this.camera.DestinationType.FILE_URI
 
+    }
+    this.camera.getPicture(option).then((imageData)=>{
+      this.image=imageData;
+      console.log(imageData);
+      console.log('error obtaining picture from library')
+    } , (err)=> {console.log('Error obtaining picutre from library')});
+  }
 }
